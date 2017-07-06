@@ -1,6 +1,26 @@
-const spike-optimize = require('..')
+const optimize = require('..')
+const Spike = require('spike-core')
 const test = require('ava')
+const path = require('path')
+const fixtures = path.join(__dirname, 'fixtures')
 
-test('basic', (t) => {
-  t.is(spike-optimize, 'test')
+test.cb('basic', (t) => {
+  const project = new Spike({
+    root: path.join(fixtures, 'basic'),
+    entry: { main: './index.js' },
+    plugins: [...optimize({
+      scopeHoisting: true,
+      aggressiveSplitting: true,
+      hashNaming: true,
+      minify: true
+    })]
+  })
+
+  project.on('error', t.end)
+  project.on('warning', t.end)
+  project.on('compile', (res) => {
+    t.end()
+  })
+
+  project.compile()
 })

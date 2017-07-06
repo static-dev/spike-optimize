@@ -18,12 +18,12 @@ A plugin that provides bleeding edge performance optimizations for spike.
 Currently, spike-optimize provides a simple interface through which you can enable scope hoisting, aggressive splitting for http/2, and hashed asset processing -- features that are on the more advanced side of webpack configuration, but which can be set up with simple boolean options through this plugin. For example:
 
 ```js
-const Optimize = require('spike-optimize')
+const optimize = require('spike-optimize')
 
 module.exports = {
   // ... your config ...
   plugins: [
-    new Optimize({
+    ...optimize({
       scopeHoisting: true,
       aggressiveSplitting: true, // or set your size limits ex. [30000, 50000]
       hashNaming: true
@@ -31,6 +31,8 @@ module.exports = {
   ]
 }
 ```
+
+> NOTE: Notice that optimize actually returns an array of plugins, so the instantiation is slightly different here.
 
 Now, as soon as you are using hash naming, you no longer have a way to include the scripts on your page, since they are named randomly. As such, the plugin provides a helper in the form of a custom element that gets post-processed by reshape. It looks like this:
 
