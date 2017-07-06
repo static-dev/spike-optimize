@@ -1,5 +1,7 @@
 # Spike Optimization Plugin
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/static-dev/spike-optimize.svg)](https://greenkeeper.io/)
+
 [![npm](https://img.shields.io/npm/v/spike-optimize.svg?style=flat-square)](https://npmjs.com/package/spike-optimize)
 [![tests](https://img.shields.io/travis/static-dev/spike-optimize.svg?style=flat-square)](https://travis-ci.org/static-dev/spike-optimize?branch=master)
 [![dependencies](https://img.shields.io/david/static-dev/spike-optimize.svg?style=flat-square)](https://david-dm.org/static-dev/spike-optimize)
