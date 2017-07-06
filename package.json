@@ -1,0 +1,30 @@
+{
+  "name": "spike-optimize",
+  "description": "bleeding edge performance optimization for spike",
+  "version": "0.0.0",
+  "author": "static-dev",
+  "ava": {
+    "verbose": "true"
+  },
+  "bugs": "https://github.com/static-dev/spike-optimize/issues",
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "codecov": "^2.1.0",
+    "nyc": "^10.2.0",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2"
+  },
+  "engines": {
+    "node": ">= 6"
+  },
+  "homepage": "https://github.com/static-dev/spike-optimize",
+  "license": "MIT",
+  "main": "lib",
+  "repository": "static-dev/spike-optimize",
+  "scripts": {
+    "codecov": "nyc report -r lcovonly && codecov",
+    "coverage": "nyc ava && nyc report --reporter=html && open ./coverage/index.html",
+    "lint": "standard | snazzy",
+    "test": "nyc ava"
+  }
+}
