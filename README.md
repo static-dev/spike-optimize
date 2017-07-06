@@ -77,6 +77,7 @@ Also note that this plugin will significantly slow down compilation due to the e
 | **aggressiveSplitting** | Configures webpack to use [aggressive splitting](https://medium.com/webpack/webpack-http-2-7083ec3f3ce6) for optimized h2. | |
 | **hashNaming** | Configures webpack to name your javascript output based on [hashes of their contents](https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95). | |
 | **customElementName** | Name of the custom element wrapper used to transform script names. | `js` |
+| **minify** | Activates the uglifyjs plugin for minifying your js | |
 
 ### License & Contributing
 
