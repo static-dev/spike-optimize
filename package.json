@@ -8,9 +8,9 @@
   },
   "bugs": "https://github.com/static-dev/spike-optimize/issues",
   "devDependencies": {
-    "ava": "^0.19.1",
+    "ava": "^0.20.0",
     "codecov": "^2.1.0",
-    "nyc": "^10.2.0",
+    "nyc": "^11.0.3",
     "snazzy": "^7.0.0",
     "standard": "^10.0.2"
   },
