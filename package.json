@@ -28,5 +28,9 @@
     "coverage": "nyc ava && nyc report --reporter=html && open ./coverage/index.html",
     "lint": "standard | snazzy",
     "test": "nyc ava"
+  },
+  "dependencies": {
+    "reshape-plugin-util": "^0.2.1",
+    "spike-util": "^1.2.0"
   }
 }

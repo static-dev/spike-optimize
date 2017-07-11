@@ -34,18 +34,16 @@ module.exports = {
 
 > NOTE: Notice that optimize actually returns an array of plugins, so the instantiation is slightly different here.
 
-Now, as soon as you are using hash naming, you no longer have a way to include the scripts on your page, since they are named randomly. As such, the plugin provides a helper in the form of a custom element that gets post-processed by reshape. It looks like this:
+Now, as soon as you are using hash naming, you no longer have a way to include the scripts on your page, since they are named randomly. However, this plugin will scan your pages and detect when you are using the assets as they are named in your entries automatically. So you can still include the script like this:
 
 ```html
 <body>
   <!--  ... your code ... -->
-  <js>
-    <script src='/js/main.js'></script>
-  </js>
+  <script src='/js/main.js'></script>
 </body>
 ```
 
-Anything inside the webpack-assets block with be transformed such that the naming is correct if you are using hash naming, and if not it is transparent, and will remove itself in your final build, leaving its contents behind. So for example, if you had `hashNaming` and `aggressiveSplitting` set to `true`, your result might look like this:
+Any scripts that webpack processes will be transformed such that the naming is correct if you are using hash naming, and if it has been split into multiple outputs, it will be replaced by multiple script tags. So for example, if you had `hashNaming` and `aggressiveSplitting` set to `true`, your result might look like this:
 
 ```html
 <body>
@@ -56,7 +54,7 @@ Anything inside the webpack-assets block with be transformed such that the namin
 </body>
 ```
 
-In this case, your bundle has been split into a couple files to optimize http/2 load speed, and each file has been renamed to a hash. If you had those two options disabled, however, it would look like this:
+In this case, your bundle has been split into a couple files to optimize http/2 load speed, and each file has been renamed to a hash. If you had those two options disabled, however, it would still look like this:
 
 ```html
 <body>
@@ -76,7 +74,6 @@ Also note that this plugin will significantly slow down compilation due to the e
 | **scopeHoisting** | Configures webpack to use [scope hoisting](https://medium.com/webpack/brief-introduction-to-scope-hoisting-in-webpack-8435084c171f). | |
 | **aggressiveSplitting** | Configures webpack to use [aggressive splitting](https://medium.com/webpack/webpack-http-2-7083ec3f3ce6) for optimized h2. | |
 | **hashNaming** | Configures webpack to name your javascript output based on [hashes of their contents](https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95). | |
-| **customElementName** | Name of the custom element wrapper used to transform script names. | `js` |
 | **minify** | Activates the uglifyjs plugin for minifying your js | |
 
 ### License & Contributing

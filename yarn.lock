@@ -4739,7 +4739,7 @@ reshape-parser@^0.2.1:
   dependencies:
     parse5 "^2.1.5"
 
-reshape-plugin-util@^0.2.0:
+reshape-plugin-util@^0.2.0, reshape-plugin-util@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/reshape-plugin-util/-/reshape-plugin-util-0.2.1.tgz#29358959d58c9eebca25c35efe0cc627817cf092"
   dependencies:
