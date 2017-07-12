@@ -7,8 +7,8 @@ const fixtures = path.join(__dirname, 'fixtures')
 test.cb('basic', (t) => {
   const project = new Spike({
     root: path.join(fixtures, 'basic'),
-    entry: { main: './index.js' },
-    plugins: [...optimize({
+    entry: { main: './index.js', second: './secondary.js' },
+    afterSpikePlugins: [...optimize({
       scopeHoisting: true,
       aggressiveSplitting: true,
       hashNaming: true,
