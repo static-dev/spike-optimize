@@ -22,11 +22,10 @@ const optimize = require('spike-optimize')
 
 module.exports = {
   // ... your config ...
-  plugins: [
+  afterSpikePlugins: [
     ...optimize({
       scopeHoisting: true,
-      aggressiveSplitting: true, // or set your size limits ex. [30000, 50000]
-      hashNaming: true
+      aggressiveSplitting: true // or set your size limits ex. [30000, 50000]
     })
   ]
 }
@@ -34,7 +33,7 @@ module.exports = {
 
 > NOTE: Notice that optimize actually returns an array of plugins, so the instantiation is slightly different here.
 
-Now, as soon as you are using hash naming, you no longer have a way to include the scripts on your page, since they are named randomly. However, this plugin will scan your pages and detect when you are using the assets as they are named in your entries automatically. So you can still include the script like this:
+Out of the box, this plugin will force webpack to use [chunkhash naming](https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95) optimized for long term cacheing. Now, as soon as you are using hash naming, you no longer have a way to include the scripts on your page, since they are named randomly. However, this plugin will scan your pages and detect when you are using the assets as they are named in your entries automatically, then replace them with the correct path. So you can still include the script like this:
 
 ```html
 <body>
@@ -43,7 +42,7 @@ Now, as soon as you are using hash naming, you no longer have a way to include t
 </body>
 ```
 
-Any scripts that webpack processes will be transformed such that the naming is correct if you are using hash naming, and if it has been split into multiple outputs, it will be replaced by multiple script tags. So for example, if you had `hashNaming` and `aggressiveSplitting` set to `true`, your result might look like this:
+Any scripts that webpack processes will be transformed such that the naming is correct if you are using hash naming, and if it has been split into multiple outputs, it will be replaced by multiple script tags. So for example, if you have `aggressiveSplitting` set to `true`, your result might look like this:
 
 ```html
 <body>
@@ -54,18 +53,18 @@ Any scripts that webpack processes will be transformed such that the naming is c
 </body>
 ```
 
-In this case, your bundle has been split into a couple files to optimize http/2 load speed, and each file has been renamed to a hash. If you had those two options disabled, however, it would still look like this:
+In this case, your bundle has been split into a couple files to optimize http/2 load speed, and each file has been renamed to a hash. If you just use the plugin with default settings, it won't split your output and it will look more like this:
 
 ```html
 <body>
   <!--  ... your code ... -->
-  <script src='/js/main.js'></script>
+  <script src='/js/kj2b34k32b44nio.js'></script>
 </body>
 ```
 
 Note that at the moment, these optimizations are only available for javascript, not css. Aggressive splitting and hash naming could be marginally useful for css, and I will consider adding this in the future. In the meantime, PRs accepted!
 
-Also note that this plugin will significantly slow down compilation due to the extra optimizations, and is only recommended to be used in production.
+Also note that this plugin will significantly slow down compilation due to the extra optimizations, and is only recommended to be used in production (but please test it locally before going live).
 
 ### Options
 
@@ -73,7 +72,6 @@ Also note that this plugin will significantly slow down compilation due to the e
 | ---- | ----------- | ------- |
 | **scopeHoisting** | Configures webpack to use [scope hoisting](https://medium.com/webpack/brief-introduction-to-scope-hoisting-in-webpack-8435084c171f). | |
 | **aggressiveSplitting** | Configures webpack to use [aggressive splitting](https://medium.com/webpack/webpack-http-2-7083ec3f3ce6) for optimized h2. | |
-| **hashNaming** | Configures webpack to name your javascript output based on [hashes of their contents](https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95). | |
 | **minify** | Activates the uglifyjs plugin for minifying your js | |
 
 ### License & Contributing
