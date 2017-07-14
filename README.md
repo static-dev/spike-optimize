@@ -25,6 +25,7 @@ module.exports = {
   afterSpikePlugins: [
     ...optimize({
       scopeHoisting: true,
+      minify: true,
       aggressiveSplitting: true // or set your size limits ex. [30000, 50000]
     })
   ]
