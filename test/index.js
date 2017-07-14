@@ -53,6 +53,17 @@ test('only aggressive splitting option', (t) => {
   })
 })
 
+test.only('aggressive splitting size params', (t) => {
+  return compileProject('basic', {
+    entry: { main: './index.js' },
+    afterSpikePlugins: [...optimize({ aggressiveSplitting: [5000, 10000] })]
+  }).then(({ publicPath, stats }) => {
+    const filenames = Object.keys(stats.compilation.assets)
+    t.is(filenames.length, 14)
+    return rimraf(publicPath)
+  })
+})
+
 test('only minify option', (t) => {
   return compileProject('basic', {
     entry: { main: './index.js' },
