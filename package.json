@@ -1,7 +1,7 @@
 {
   "name": "spike-optimize",
   "description": "bleeding edge performance optimization for spike",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "static-dev",
   "ava": {
     "verbose": "true",
