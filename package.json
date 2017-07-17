@@ -8,6 +8,13 @@
     "serial": "true"
   },
   "bugs": "https://github.com/static-dev/spike-optimize/issues",
+  "dependencies": {
+    "objectfn": "^2.0.0",
+    "reshape": "^0.4.1",
+    "reshape-plugin-util": "^0.2.1",
+    "rimraf-promise": "^2.0.0",
+    "spike-util": "^1.3.0"
+  },
   "devDependencies": {
     "ava": "^0.21.0",
     "codecov": "^2.1.0",
@@ -21,6 +28,9 @@
     "node": ">= 6"
   },
   "homepage": "https://github.com/static-dev/spike-optimize",
+  "keywords": [
+    "spikeplugin"
+  ],
   "license": "MIT",
   "main": "lib",
   "repository": "static-dev/spike-optimize",
@@ -29,12 +39,5 @@
     "coverage": "nyc ava && nyc report --reporter=html && open ./coverage/index.html",
     "lint": "standard | snazzy",
     "test": "nyc ava"
-  },
-  "dependencies": {
-    "objectfn": "^2.0.0",
-    "reshape": "^0.4.1",
-    "reshape-plugin-util": "^0.2.1",
-    "rimraf-promise": "^2.0.0",
-    "spike-util": "^1.3.0"
   }
 }
