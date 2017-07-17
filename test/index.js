@@ -53,7 +53,7 @@ test('only aggressive splitting option', (t) => {
   })
 })
 
-test.only('aggressive splitting size params', (t) => {
+test('aggressive splitting size params', (t) => {
   return compileProject('basic', {
     entry: { main: './index.js' },
     afterSpikePlugins: [...optimize({ aggressiveSplitting: [5000, 10000] })]
